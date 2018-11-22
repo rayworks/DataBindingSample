@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.rayworks.databindingsample"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+
+    //noinspection GradleDependency
+    kapt "com.android.databinding:compiler:$gradleVersion"
+}
+
+kapt {
+    generateStubs = true
+}
+
