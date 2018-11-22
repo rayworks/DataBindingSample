@@ -37,9 +37,6 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$runnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
-
-    //noinspection GradleDependency
-    kapt "com.android.databinding:compiler:$gradleVersion"
 }
 
 kapt {
